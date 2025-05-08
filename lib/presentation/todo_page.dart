@@ -15,7 +15,8 @@ class TodoPage extends StatelessWidget {
           padding: EdgeInsets.all(16.0),
           child: Column(
             children: [
-              Text('Todo List'),
+              Text('Todo List', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),),
+              SizedBox(height: 20,),
               Row(
                 children: [
                   Column(
@@ -143,8 +144,22 @@ class TodoPage extends StatelessWidget {
                                       todo.isComplete
                                           ? 'Completed'
                                           : 'Not Completed',
+                                      style: TextStyle(
+                                        color:
+                                            todo.isComplete
+                                                ? Colors.green
+                                                : Colors.red,
+                                      ),
                                     ),
                                   ],
+                                ),
+                                Checkbox(
+                                  value: todo.isComplete,
+                                  onChanged: (value) {
+                                    context.read<TodoBloc>().add(
+                                      TodoEventComplete(index: index),
+                                    );
+                                  },
                                 ),
                               ],
                             ),
