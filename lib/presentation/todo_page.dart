@@ -99,6 +99,18 @@ class TodoPage extends StatelessWidget {
                   ],
                 ),
               ),
+              SizedBox(height: 16.0),
+              Expanded(
+                child: BlocBuilder<TodoBloc, TodoState>(
+                  builder: (context, state) {
+                    if (state is TodoLoading) {
+                      return Center(child: CircularProgressIndicator());
+                    } else {
+                      return Center(child: Text('No todos Available'));
+                    }
+                  },
+                ),
+              ),
             ],
           ),
         ),
