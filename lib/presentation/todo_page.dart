@@ -57,6 +57,7 @@ class TodoPage extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(height: 16),
               Form(
                 key: _key,
                 child: Row(
@@ -75,6 +76,14 @@ class TodoPage extends StatelessWidget {
                           return null;
                         },
                       ),
+                    ),
+                    SizedBox(width: 16),
+                    FilledButton(
+                      onPressed: () {
+                        if (_key.currentState!.validate()) {
+                        }
+                      },
+                      child: Text('Tambah'),
                     ),
                   ],
                 ),
